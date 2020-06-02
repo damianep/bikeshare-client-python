@@ -34,7 +34,10 @@ class GBFSClient(object):
 
         self.language = language
         
-        feeds = data[language].get('feeds')
+        if language == "feeds":
+            feeds = data.get('feeds')
+        else:
+            feeds = data[language].get('feeds')
         if feeds is None:
             raise Exception('GBFS missing required json path: "data.{}.feeds"'.format(language))
 
